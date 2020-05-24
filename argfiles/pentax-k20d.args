@@ -1,0 +1,29 @@
+## ARGFILE FOR PENTAX K20D RAW PHOTOGRAPHS
+-ee
+-v
+-if
+$MakerNotes:InternalSerialNumber
+
+-if
+$EXIF:Make eq 'PENTAX'
+
+-if
+$DateTimeOriginal
+
+-if
+$EXIF:Model eq 'PENTAX K20D'
+
+-if
+$MakerNotes:ShutterCount
+
+-Filename<${DateTimeOriginal#;DateFmt("%Y%m%d-%H%M%S")}-${MakerNotes:ShutterCount}%+c.%le
+-Directory<./$EXIF:Model/$EXIF:DateTimeOriginal
+
+-ext
+PEF
+
+-ext
+DNG
+
+-d
+%Y/%m/%d/

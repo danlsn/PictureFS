@@ -1,0 +1,87 @@
+## ARGS FOR PENTAX K20D RAW PHOTOGRAPHS
+-if
+$MakerNotes:InternalSerialNumber
+
+-if
+$EXIF:Make eq 'PENTAX'
+
+-if
+$DateTimeOriginal
+
+-if
+$EXIF:Model eq 'PENTAX K20D'
+
+-if
+$MakerNotes:ShutterCount
+
+-Filename<${DateTimeOriginal#;DateFmt("%Y%m%d-%H%M%S")}-${MakerNotes:ShutterCount}%+c.%le
+-Directory<./$EXIF:Model/$EXIF:DateTimeOriginal
+
+-ext
+PEF
+
+-ext
+DNG
+
+-d
+%Y/%m/%d/
+
+-execute
+
+## ARGS FOR Nikon RAW Photos
+
+-if
+$MakerNotes:SerialNumber
+
+-if
+$EXIF:Model =~ /NIKON (D600|D750|D7000)/i
+
+-if
+$DateTimeOriginal
+
+-if
+$MakerNotes:ShutterCount
+
+-Filename<${DateTimeOriginal#;DateFmt("%Y%m%d-%H%M%S")}-${MakerNotes:ShutterCount}%+c.%le
+-Directory<./$EXIF:Model/$EXIF:DateTimeOriginal
+
+-ext
+NEF
+
+-ext
+DNG
+
+-d
+%Y/%m/%d/
+
+-execute
+
+## ARGS FOR SIDECAR XMP
+-ext
+xmp
+
+-if
+$XMP:all
+
+-if
+$XMP:Make =~ /(NIKON|PENTAX|CANON)/i
+
+-if
+$XMP:DateTimeOriginal
+
+-if
+$XMP:SerialNumber
+
+-if
+$XMP:ImageNumber
+
+-Filename<${XMP:DateTimeOriginal#;DateFmt("%Y%m%d-%H%M%S")}-${XMP:ImageNumber}%+c.%le
+-Directory<./$XMP:Model/$XMP:DateTimeOriginal
+
+-d
+%Y/%m/%d/
+
+-execute
+
+
+
