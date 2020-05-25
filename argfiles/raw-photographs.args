@@ -9,7 +9,7 @@ $EXIF:Make eq 'PENTAX'
 $DateTimeOriginal
 
 -if
-$EXIF:Model eq 'PENTAX K20D'
+$EXIF:Model =~ /PENTAX K20D/i
 
 -if
 $MakerNotes:ShutterCount
@@ -19,6 +19,34 @@ $MakerNotes:ShutterCount
 
 -ext
 PEF
+
+-ext
+DNG
+
+-d
+%Y/%m/%d/
+
+-execute
+
+## ARGS FOR CANON CR2
+
+-if
+$MakerNotes:InternalSerialNumber
+
+-if
+$EXIF:Make eq 'Canon'
+
+-if
+$DateTimeOriginal
+
+-if
+$EXIF:Model
+
+-Filename<${DateTimeOriginal#;DateFmt("%Y%m%d-%H%M%S")}-${Composite:FileNumber}%+c.%le
+-Directory<./$EXIF:Model/$EXIF:DateTimeOriginal
+
+-ext
+CR2
 
 -ext
 DNG
@@ -80,6 +108,22 @@ $XMP:ImageNumber
 
 -d
 %Y/%m/%d/
+
+-execute
+
+## Exclude all photos processed by JPEGmini
+## "File:Comment": "Optimized by JPEGmini 3.15.0.81154240 0x4ad4b904"
+
+-if
+$File:Comment
+
+-if
+$File:Comment =~ /Optimized by JPEGmini/i
+
+-ext
+jpg
+
+-Directory=../processed-by-jpegmini/%D
 
 -execute
 
