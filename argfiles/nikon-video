@@ -1,0 +1,26 @@
+## NIKON VIDEO ARGS
+-i
+*CANON*
+
+-ext
+MOV
+
+-ext
+MP4
+
+-if
+$MakerNotes:Model =~ /Nikon/i
+
+-if
+$MakerNotes:all
+
+-if
+$MakeNotes:FrameCount
+
+-Filename<${MakerNotes:DateTimeOriginal#;DateFmt("%Y%m%d-%H%M%S")}-${MakerNotes:FrameCount}%+c.%le
+-Directory<./${MakerNotes:Model}/${MakerNotes:DateTimeOriginal}
+
+-d
+%Y/%m/%d/
+
+-execute
