@@ -1,0 +1,48 @@
+## OLD IPHONE VIDEOS
+-if
+$QuickTime:Make eq 'Apple'
+
+-if
+$QuickTime:Model =~ /iphone/i
+
+-if
+$Composite:AvgBitrate
+
+-if
+$QuickTime:ContentCreateDate or $QuickTime:CreateDate
+
+-if
+$File:MIMEType =~ /video/i
+
+-Filename<${QuickTime:CreateDate#;DateFmt("%Y%m%d-%H%M%S")}-${Composite:AvgBitRate;s/(\d{2})\.(\d)\s.+/$1$2/}%+c.%le
+-Filename<${QuickTime:ContentCreateDate#;DateFmt("%Y%m%d-%H%M%S")}-${Composite:AvgBitRate;s/(\d{2})\.(\d)\s.+/$1$2/}%+c.%le
+-Directory<./${QuickTime:Model}/${QuickTime:ContentCreateDate}
+
+-d
+%Y/%m/%d/
+
+-execute
+
+## OLD IPHONE VIDEOS
+-if
+$QuickTime:Make eq 'Apple'
+
+-if
+$QuickTime:Model =~ /iphone/i
+
+-if
+$Composite:AvgBitrate
+
+-if
+$QuickTime:ContentCreateDate
+
+-if
+$File:MIMEType =~ /video/i
+
+-Filename<${QuickTime:ContentCreateDate#;DateFmt("%Y%m%d-%H%M%S")}-${Composite:AvgBitRate;s/\.Mbps//}%+c.%le
+-Directory<./${QuickTime:Model}/${QuickTime:ContentCreateDate}
+
+-d
+%Y/%m/%d/
+
+-execute

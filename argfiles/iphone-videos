@@ -1,0 +1,27 @@
+## iPhone Args with GPS etc..
+
+-if
+$QuickTime:Make eq 'Apple'
+
+-if
+$QuickTime:Model =~ /iPhone/i
+
+-if
+not $File:Comment
+
+-if
+$QuickTime:CreationDate
+
+-if
+$Composite:GPSPosition
+
+-if
+$Composite:AvgBitrate
+
+-Filename<${QuickTime:CreationDate#;DateFmt("%Y%m%d-%H%M%S")}-${Composite:AvgBitRate;s/\sMbps//;s/\.//}%+c.%le
+-Directory<./${QuickTime:Model}/${QuickTime:CreationDate}
+
+-d
+%Y/%m/%d/
+
+-execute

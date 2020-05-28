@@ -1,0 +1,30 @@
+## OLD IPHONE VIDEOS
+-if
+$QuickTime:CreateDate le '2012:01:01'
+
+-if
+$QuickTime:CreateDate ge '2011:01:01'
+
+-if
+not $EXIF:Make or not $EXIF:Model
+
+-if
+$Composite:AvgBitrate
+
+-if
+$QuickTime:HandlerVendorID eq 'Apple'
+
+-if
+$QuickTime:VideoFrameRate == '29.968'
+
+-if
+$QuickTime:ContentCreateDate or $QuickTime:CreateDate
+
+-if
+$Composite:ImageSize eq '1280x720'
+
+-QuickTime:Make=Apple
+
+-QuickTime:Model=iPhone 4
+
+-execute

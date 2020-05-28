@@ -5,6 +5,9 @@ JPG
 -ext
 DNG
 
+-ext
+GPR
+
 -if
 $EXIF:Make eq 'GoPro'
 
@@ -20,7 +23,7 @@ $Composite:GPSPosition
 -if
 $EXIF:DateTimeOriginal
 
--Filename<${DateTimeOriginal#;DateFmt("%Y%m%d-%H%M%S")}-${EXIF:ImageDescription;/DCIM.+(G\d{7})\.JPG/$1/ig}%+c.%le
+-Filename<${DateTimeOriginal#;DateFmt("%Y%m%d-%H%M%S")}-${EXIF:ImageDescription;/DCIM.+(G\d{7})\./$1/ig}%+c.%le
 -Directory<./$EXIF:Model/$EXIF:DateTimeOriginal
 
 -d

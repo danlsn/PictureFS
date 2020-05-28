@@ -1,3 +1,5 @@
+#ALL MOBILE PHOTOGRAPHS
+
 ## ARGS FOR APPLE IPHONE PHOTOGRAPHS
 
 -if
@@ -32,8 +34,6 @@ jpg
 
 -execute
 
-## exiftool -@ ~/Documents/GitHub/PictureFS/argfiles/iphone-pictures.args -common_args -ee -v -fast -r
-
 ## OLD IPHONE PHOTOGRAPH ARGS
 -if
 $EXIF:Make eq 'Apple'
@@ -54,5 +54,37 @@ $Composite:LightValue
 
 -d
 %Y/%m/%d/
+
+-execute
+
+
+## TODO: SAMSUNG PHONE PHOTOGRAPHS
+
+-if
+$EXIF:Make =~ /samsung/i
+
+-if
+$EXIF:Model =~ /SM\-G93.+/i
+
+-if
+$EXIF:DateTimeOriginal
+
+-if
+$EXIF:Software =~ /G93.+/i
+
+-if
+$EXIF:SubSecTimeOriginal
+
+-if
+not $File:Comment
+
+-Filename<${EXIF:DateTimeOriginal#;DateFmt("%Y%m%d-%H%M%S")}-${EXIF:SubSecTimeOriginal}%+c.%le
+-Directory<./${EXIF:Model}/${EXIF:DateTimeOriginal}
+
+-d
+%Y/%m/%d/
+
+-ext
+jpg
 
 -execute
