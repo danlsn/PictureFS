@@ -1,0 +1,27 @@
+## ARGS FOR CANON CR2
+
+-if
+$MakerNotes:InternalSerialNumber
+
+-if
+$EXIF:Make eq 'Canon'
+
+-if
+$DateTimeOriginal
+
+-if
+$EXIF:Model
+
+-Filename<${DateTimeOriginal#;DateFmt("%Y%m%d-%H%M%S")}-${Composite:FileNumber}%+c.%le
+-Directory<./$EXIF:Model/$EXIF:DateTimeOriginal
+
+-ext
+CR2
+
+-ext
+DNG
+
+-d
+%Y/%m/%d/
+
+-execute

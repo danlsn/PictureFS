@@ -4,6 +4,39 @@
 JPG
 
 -if
+not $XMP:ImageNumber
+
+-if
+$EXIF:SubSecTimeOriginal
+
+-if
+$Composite:ImageSize
+
+-if
+$EXIF:Software
+
+-if
+$EXIF:Software =~ /.+Lightroom.+/i
+
+-if
+$EXIF:Model
+
+-if
+$EXIF:DateTimeOriginal
+
+-Filename<${DateTimeOriginal#;DateFmt("%Y%m%d-%H%M%S")}-${EXIF:SubSecTimeOriginal}_${Composite:ImageSize}%+c.%le
+-Directory<./$EXIF:Model/$EXIF:DateTimeOriginal/$Composite:ImageSize
+
+-d
+%Y/%m/%d/
+
+-execute
+
+
+-ext
+JPG
+
+-if
 $XMP:ImageNumber
 
 -if

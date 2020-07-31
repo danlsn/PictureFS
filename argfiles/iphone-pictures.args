@@ -35,6 +35,7 @@ jpg
 ## exiftool -@ ~/Documents/GitHub/PictureFS/argfiles/iphone-pictures.args -common_args -ee -v -fast -r
 
 ## OLD IPHONE PHOTOGRAPH ARGS
+-progress:OLD IPHONE PHOTOGRAPH ARGS [%100b][%p]
 -if
 $EXIF:Make eq 'Apple'
 

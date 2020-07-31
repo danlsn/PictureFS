@@ -1,0 +1,14 @@
+# MISSING METADATA
+-if
+not $EXIF:Make
+
+-if
+not $EXIF:Model
+
+-if
+not $MakerNotes:all
+
+-if
+not $XMP:all
+
+-Directory<./${Composite:Megapixels;}
